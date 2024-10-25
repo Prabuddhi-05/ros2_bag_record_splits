@@ -1,0 +1,5 @@
+input_bag: "/media/prabuddhi/Crucial X9/Human_sensing_bags/Day3/1"
+output_bag: "/media/prabuddhi/Crucial X9/Human_sensing_bags/Splits/file1"
+start_time: 30
+end_time: 45
+
