@@ -1,12 +1,12 @@
-input_bag: "/media/prabuddhi/Crucial X9/Human_sensing_bags/Day3/1"
+input_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Day3/1"
 segments:
-  - output_bag: "/media/prabuddhi/Crucial X9/Human_sensing_bags/Splits/bag1"
-    start_time: 10
-    end_time: 15
-  - output_bag: "/media/prabuddhi/Crucial X9/Human_sensing_bags/Splits/bag2"
-    start_time: 18
-    end_time: 30
-  - output_bag: "/media/prabuddhi/Crucial X9/Human_sensing_bags/Splits/bag3"
-    start_time: 45
-    end_time: 60
+  - output_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Splits/bag1"
+    start_time: 147.93
+    end_time: 152
+  - output_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Splits/bag2"
+    start_time: 162.887
+    end_time: 180.676
+  - output_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Splits/bag3"
+    start_time: 187.531
+    end_time: 198.737
 
