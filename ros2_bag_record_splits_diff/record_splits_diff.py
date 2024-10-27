@@ -3,53 +3,59 @@ import time
 import sys
 import yaml
 
-# # Plays the entire bag file
+# Plays the entire bag file from the beginning
 def play_bag(input_bagfile):
     play_cmd = ["ros2", "bag", "play", input_bagfile]
-    return subprocess.Popen(play_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE) # Separate process for playing bags
+    return subprocess.Popen(play_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-# Records all topics from the bag file
+# Records all topics to the specified output bag file
 def record_bag(output_bagfile):
     record_cmd = ["ros2", "bag", "record", "-a", "-o", output_bagfile]
-    return subprocess.Popen(record_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE) # Separate process for recording bags
- 
-# Splits the bag file into multiple segments
-def split_bag(input_bag, segments):
-    print(f"Playing the bag file {input_bag}...")
-    play_process = play_bag(input_bag)
+    return subprocess.Popen(record_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
+def split_bag(input_bag, segments):
+    # Start playing the bag file from the beginning
+    print(f"Playing the bag file {input_bag} from the beginning")
+    play_process = play_bag(input_bag)
+    playback_start_time = time.time()  # Record the start time of playback
+
+    # Process each segment in the configuration
     for segment in segments:
         start_time_sec = segment['start_time']
         end_time_sec = segment['end_time']
         output_bag = segment['output_bag']
 
-        # Validates start and end time
+        # Validate start and end times
         if end_time_sec <= start_time_sec:
-            print(f"Error: End time must be greater than start time for {output_bag}.")
+            print(f"Error: End time must be greater than start time for {output_bag}. Skipping segment.")
             continue
-            
-        # Calculates wait_before_record and record_duration
-        wait_before_record = start_time_sec
+
+        # Calculate the recording duration for this segment
         record_duration = end_time_sec - start_time_sec
+        print(f"Segment for {output_bag} has a duration of {record_duration:.2f} seconds.")
 
-        # Waits until the start time of the segment
-        print(f"Waiting for {wait_before_record} seconds to start recording {output_bag}...")
-        time.sleep(wait_before_record)
+        # Calculate the wait time until this segment's start
+        time_to_wait = start_time_sec - (time.time() - playback_start_time)
+        if time_to_wait > 0:
+            print(f"Waiting {time_to_wait:.2f} seconds to start recording {output_bag}")
+            time.sleep(time_to_wait)
 
-        # Starts recording
-        print(f"Recording segment to {output_bag} from {start_time_sec} to {end_time_sec} seconds...")
+        # Start recording for the segment
+        print(f"Recording segment to {output_bag} from {start_time_sec} to {end_time_sec} seconds")
         record_process = record_bag(output_bag)
 
-        # Records for the specified duration
+        # Record for the specified duration
         time.sleep(record_duration)
 
-        # Stops the recording process for this segment
-        print(f"Stopping recording for {output_bag}...")
+        # Stop the recording process
+        print(f"Stopping the recording for {output_bag}")
+        print("........................................")
         record_process.terminate()
 
-    # Stops the playback process after all segments are recorded
-    print("Stopping the bag file playback...")
+    # Stop playback once all segments have been recorded
+    print("Stopping the bag file playback")
     play_process.terminate()
+    print("All segments recorded and playback completed.")
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
@@ -58,7 +64,7 @@ if __name__ == '__main__':
 
     config_file = sys.argv[1]
 
-    # Loads the configuration from the YAML file
+    # Load the configuration from the YAML file
     try:
         with open(config_file, 'r') as f:
             config = yaml.safe_load(f)
@@ -69,4 +75,3 @@ if __name__ == '__main__':
         sys.exit(1)
 
     split_bag(input_bag, segments)
-
