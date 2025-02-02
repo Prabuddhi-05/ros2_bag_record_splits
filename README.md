@@ -29,5 +29,5 @@ bags:
 ```
 3. **Run the script**:
    ```bash
-   python3 split_bags.py config.yaml
+   python3 record_splits.py config.yaml
    ```
