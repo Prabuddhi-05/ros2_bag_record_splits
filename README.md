@@ -28,7 +28,7 @@ bags:
         end_time: 15
 ```
 ### What to Change in the YAML:
-- **Change `/path/to/bag1` and `/path/to/bag2`** to the actual paths of your ROS2 bag files.
+- **Change `/path/to/bag1` and `/path/to/bag2`** to the actual paths of your original ROS2 bag files.
 - **Update `/path/to/segmentX`** to the desired output location for each split segment.
 - **Modify `start_time` and `end_time`** to define where each segment starts and stops.
 
