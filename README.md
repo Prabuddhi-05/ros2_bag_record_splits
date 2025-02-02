@@ -6,10 +6,10 @@
 
 ## Requirements
 - **Python 3** (Install dependencies with `pip install PyYAML`)
-- **ROS2 installed & sourced** (for `ros2 bag play/record`)
+- **ROS2** (for `ros2 bag play/record`)
 
 ## Usage
-1. **Edit the YAML configuration** (see example below).
+1. **Edit the YAML configuration** as given below.
 ```bash
 bags:
   - input_bag: "/path/to/bag1"
