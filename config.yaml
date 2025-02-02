@@ -1,25 +1,8 @@
 bags:
-  - input_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Day3/1"
-    segments:
-      - output_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Splits/bag1"
-        start_time: 147.93
-        end_time: 152
-      - output_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Splits/bag2"
-        start_time: 162.887
-        end_time: 180.676
-      - output_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Splits/bag3"
-        start_time: 187.531
-        end_time: 198.737
+  - "path/to/input_bag_1":
+      - [5, 15, "segment_1.bag"]
+      - [20, 30, "segment_2.bag"]
+  - "path/to/input_bag_2":
+      - [10, 25, "segment_3.bag"]
 
-  - input_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Day3/2"
-    segments:
-      - output_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Splits/bag4"
-        start_time: 147.93
-        end_time: 152
-      - output_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Splits/bag5"
-        start_time: 162.887
-        end_time: 180.676
-      - output_bag: "/media/leonuc/Crucial X91/Human_sensing_bags/Splits/bag6"
-        start_time: 187.531
-        end_time: 198.737
 
