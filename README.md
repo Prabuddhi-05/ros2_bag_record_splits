@@ -27,14 +27,6 @@ bags:
         start_time: 5
         end_time: 15
 ```
-Edit the **YAML file** (`config.yaml`) to specify:
-
-- **`input_bag`**: Path to the original ROS2 bag file.
-- **`segments`**: List of segments to extract, with:
-  - **`output_bag`**: Path for the new bag file.
-  - **`start_time`**: Time (in seconds) when recording should begin.
-  - **`end_time`**: Time (in seconds) when recording should stop.
-
 ### What to Change in the YAML:
 - **Change `/path/to/bag1` and `/path/to/bag2`** to the actual paths of your ROS2 bag files.
 - **Update `/path/to/segmentX`** to the desired output location for each split segment.
