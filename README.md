@@ -1,8 +1,8 @@
 # Split multiple ROS2 bag files by time segments
 
 ## Overview
--This script automatically splits multiple ROS2 bag files into smaller time-based segments.
--It plays each bag file and records defined segments into new bags using a YAML config file. 
+- [x] This script automatically splits multiple ROS2 bag files into smaller time-based segments.
+- [x] It plays each bag file and records defined segments into new bags using a YAML config file. 
 
 ## Requirements
 - **Python 3** (Install dependencies with `pip install PyYAML`)
