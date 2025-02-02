@@ -26,7 +26,8 @@ bags:
       - output_bag: "/path/to/segment3"
         start_time: 5
         end_time: 15
-
+```
 3. **Run the script**:
    ```bash
    python3 split_bags.py config.yaml
+   ```
