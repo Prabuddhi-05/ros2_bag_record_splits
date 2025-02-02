@@ -26,6 +26,7 @@ bags:
 ### What to change in the YAML config file:
 - **Update `/path/to/bag1` and `/path/to/bag2`** to the actual paths of your original ROS2 bag files.
 - **Modify `start_time` and `end_time`** to define where each segment starts and stops.
+- **Note:** name of the splited bags should be unique. This code will do it for you if you use any duplicated names for splited bags.
 
 3. **Run the script**:
    ```bash
