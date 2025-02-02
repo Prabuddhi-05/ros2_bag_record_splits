@@ -27,8 +27,8 @@ bags:
         start_time: 5
         end_time: 15
 ```
-### What to Change in the YAML:
-- **Change `/path/to/bag1` and `/path/to/bag2`** to the actual paths of your original ROS2 bag files.
+### What to change in the YAML config file:
+- **Update `/path/to/bag1` and `/path/to/bag2`** to the actual paths of your original ROS2 bag files.
 - **Update `/path/to/segmentX`** to the desired output location for each split segment.
 - **Modify `start_time` and `end_time`** to define where each segment starts and stops.
 
@@ -37,4 +37,4 @@ bags:
    python3 record_splits.py config.yaml
    ```
    
-3. New bag files appear at the specified paths.
+3. New bag files will appear at the specified paths.
