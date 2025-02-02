@@ -4,13 +4,11 @@ import sys
 import yaml
 
 # Plays the entire bag file from the beginning.
-# Returns a Popen object for the play process.
 def play_bag(input_bagfile):
     play_cmd = ["ros2", "bag", "play", input_bagfile]
     return subprocess.Popen(play_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 # Records all topics to the specified output bag file.
-# Returns a Popen object for the record process.
 def record_bag(output_bagfile):
     record_cmd = ["ros2", "bag", "record", "-a", "-o", output_bagfile]
     return subprocess.Popen(record_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -47,7 +45,7 @@ def split_bag(input_bag, segments):
         print(f"Recording segment to {output_bag} from {start_time_sec} to {end_time_sec} seconds.")
         record_process = record_bag(output_bag)
 
-        # Let it record for the required duration
+        # Record for the required duration
         time.sleep(record_duration)
 
         # Stop recording
@@ -77,7 +75,6 @@ def main():
         sys.exit(1)
 
     # Retrieve the list of bags from the config
-    # We expect 'bags' to be a list of dicts, each containing 'input_bag' and 'segments'.
     bags_list = config.get('bags', [])
     if not bags_list:
         print("No bags found in the configuration.")
